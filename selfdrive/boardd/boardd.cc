@@ -308,9 +308,9 @@ void can_health(void *s) {
   if ((health.started != 0) && (ignition_last == 0)) {
 
     int result = delete_db_value(NULL, "CarVin");
-    assert((result == 0) || (result == ERR_NO_VALUE));
+    //assert((result == 0) || (result == ERR_NO_VALUE));
     result = delete_db_value(NULL, "CarParams");
-    assert((result == 0) || (result == ERR_NO_VALUE));
+    //assert((result == 0) || (result == ERR_NO_VALUE));
 
     // diagnostic only is the default, needed for VIN query
     if (!safety_model_locked) {
