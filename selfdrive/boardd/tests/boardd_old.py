@@ -98,7 +98,7 @@ def can_init():
     if device.getVendorID() == 0xbbaa and device.getProductID() == 0xddcc:
       handle = device.open()
       handle.claimInterface(0)
-      handle.controlWrite(0x40, 0xdc, SafetyModel.allOutput, 0, b'')
+      handle.controlWrite(0x40, 0xdc, SafetyModel.toyota, 73, b'')
 
   if handle is None:
     cloudlog.warning("CAN NOT FOUND")
@@ -109,7 +109,7 @@ def can_init():
 
 def boardd_mock_loop():
   can_init()
-  handle.controlWrite(0x40, 0xdc, SafetyModel.allOutput, 0, b'')
+  handle.controlWrite(0x40, 0xdc, SafetyModel.toyota, 73, b'')
 
   logcan = messaging.sub_sock(service_list['can'].port)
   sendcan = messaging.pub_sock(service_list['sendcan'].port)
